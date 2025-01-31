@@ -3,7 +3,6 @@ import { Providers } from './providers'
 import { ColorModeToggle } from './components/ColorModeToggle'
 import { Footer } from './components/Footer'
 import './globals.css'
-import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   title: 'DocuVoice AI',
@@ -32,7 +31,6 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
-        <Toaster position="top-right" />
       </body>
     </html>
   )
