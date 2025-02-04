@@ -36,11 +36,11 @@ interface VoiceAIPanelProps {
   selectedDocuments: string[];
 }
 
-// Add type declarations at the top
+// Add proper type declarations at the top
 declare global {
   interface Window {
-    SpeechRecognition: any;
-    webkitSpeechRecognition: any;
+    SpeechRecognition: typeof SpeechRecognition;
+    webkitSpeechRecognition: typeof SpeechRecognition;
   }
 }
 
@@ -49,7 +49,7 @@ export default function VoiceAIPanel({ selectedDocuments }: VoiceAIPanelProps) {
   const [isProcessing, setIsProcessing] = useState(false)
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [status, setStatus] = useState("🎤 Tap and hold microphone to speak")
-  const recognitionRef = useRef<any>(null)
+  const recognitionRef = useRef<SpeechRecognition | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
   const audioSourceRef = useRef<AudioBufferSourceNode | null>(null)
   const hasResultRef = useRef(false)

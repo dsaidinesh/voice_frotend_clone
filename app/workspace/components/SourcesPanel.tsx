@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Box, VStack, Heading, Input, Button, Icon, Text, useColorModeValue, useToast, Flex, Checkbox, IconButton, InputGroup, InputLeftElement } from "@chakra-ui/react"
+import { Box, VStack, Input, Button, Icon, Text, useColorModeValue, useToast, Flex, Checkbox, IconButton, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import { ChevronLeftIcon } from "@chakra-ui/icons"
 import { FiFile, FiUpload, FiTrash2, FiSearch } from "react-icons/fi"
 import { uploadDocument, Document, getDocuments, deleteDocument } from "@/app/utils/api"
@@ -34,7 +34,7 @@ export default function SourcesPanel({ onDocumentSelect }: SourcesPanelProps) {
       const selectedArray = Array.from(selectedDocuments)
       onDocumentSelect(selectedArray)
     }
-  }, [selectedDocuments])
+  }, [selectedDocuments, onDocumentSelect])
 
   const fetchDocuments = async () => {
     try {

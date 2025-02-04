@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 
+interface WindowWithWebkit extends Window {
+  webkitAudioContext: typeof AudioContext;
+}
+
 export function useVoiceVisualization(isRecording: boolean) {
   const [levels, setLevels] = useState<number[]>(Array(20).fill(20))
   const analyserRef = useRef<AnalyserNode | null>(null)
@@ -13,7 +17,7 @@ export function useVoiceVisualization(isRecording: boolean) {
     const initializeAudio = async () => {
       try {
         if (isRecording) {
-          audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+          audioContext = new (window.AudioContext || (window as WindowWithWebkit).webkitAudioContext)()
           const stream = await navigator.mediaDevices.getUserMedia({ 
             audio: { 
               echoCancellation: true,
